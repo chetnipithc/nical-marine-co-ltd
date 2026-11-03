@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#102744">
+  <meta name="description" content="Nical Marine — ระบบบริหารจัดการธุรกิจทางทะเล">
+  <title>Nical Marine — Business Management</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Sarabun:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <section class="login-screen" id="loginScreen" aria-label="เข้าสู่ระบบ">
+    <div class="login-art" aria-hidden="true">
+      <div class="art-brand"><span class="brand-mark"><svg viewBox="0 0 32 32"><path d="M5 19.5c4.1 0 4.1-3 8.2-3s4.1 3 8.2 3 4.1-3 8.2-3M5 25c4.1 0 4.1-3 8.2-3s4.1 3 8.2 3 4.1-3 8.2-3M10 11.5l6-6 6 6M16 6v10" /></svg></span><span>NICAL <b>MARINE</b></span></div>
+      <div class="art-copy">
+        <span class="eyebrow light">MARINE BUSINESS MANAGEMENT</span>
+        <h1>Navigate your<br>business forward.</h1>
+        <p>จัดการทุกมิติของธุรกิจทางทะเล<br>ได้ในพื้นที่เดียว</p>
+      </div>
+      <div class="art-water">
+        <svg viewBox="0 0 760 220" preserveAspectRatio="none"><path d="M0 70c130 70 245-40 390 20s240 40 370-10v140H0Z" fill="#ffffff" opacity=".09"/><path d="M0 110c150-45 245 75 405 35s225-65 355-5v80H0Z" fill="#ffffff" opacity=".08"/></svg>
+      </div>
+      <div class="art-foot">NICAL MARINE CO., LTD. <span>·</span> BUILT FOR THE BLUE</div>
+    </div>
+    <div class="login-side">
+      <form class="login-form" id="loginForm">
+        <div class="mobile-brand"><span class="brand-mark"><svg viewBox="0 0 32 32"><path d="M5 19.5c4.1 0 4.1-3 8.2-3s4.1 3 8.2 3 4.1-3 8.2-3M5 25c4.1 0 4.1-3 8.2-3s4.1 3 8.2 3 4.1-3 8.2-3M10 11.5l6-6 6 6M16 6v10" /></svg></span><span>NICAL <b>MARINE</b></span></div>
+        <div class="login-heading">
+          <span class="eyebrow">WELCOME ABOARD</span>
+          <h2>ยินดีต้อนรับ</h2>
+          <p>ลงชื่อเข้าใช้เพื่อจัดการธุรกิจของคุณ</p>
+        </div>
+        <label for="username">ชื่อผู้ใช้งาน</label>
+        <div class="input-wrap"><span class="field-icon" data-icon="user"></span><input id="username" name="username" autocomplete="username" placeholder="กรอกชื่อผู้ใช้งาน" value="admin@nicalmarine.com" required></div>
+        <div class="password-label"><label for="password">รหัสผ่าน</label><a href="#" class="quiet-link" id="forgotPassword">ลืมรหัสผ่าน?</a></div>
+        <div class="input-wrap"><span class="field-icon" data-icon="lock"></span><input id="password" name="password" type="password" autocomplete="current-password" placeholder="กรอกรหัสผ่าน" value="nicalmarine" required><button class="show-password" type="button" aria-label="แสดงรหัสผ่าน" id="togglePassword"><span data-icon="eye"></span></button></div>
+        <button class="button button-primary login-button" type="submit">เข้าสู่ระบบ <span data-icon="arrowRight"></span></button>
+        <p class="login-hint"><span class="secure-dot"></span> ระบบสำหรับทีมงาน Nical Marine</p>
+      </form>
+      <div class="login-copyright">© <span id="loginYear"></span> Nical Marine Co., Ltd.</div>
+    </div>
+  </section>
+
+  <div class="app-shell is-hidden" id="appShell">
+    <div class="sidebar-scrim" id="sidebarScrim"></div>
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#" aria-label="Nical Marine หน้าหลัก" data-page="dashboard"><span class="brand-mark"><svg viewBox="0 0 32 32"><path d="M5 19.5c4.1 0 4.1-3 8.2-3s4.1 3 8.2 3 4.1-3 8.2-3M5 25c4.1 0 4.1-3 8.2-3s4.1 3 8.2 3 4.1-3 8.2-3M10 11.5l6-6 6 6M16 6v10" /></svg></span><span class="brand-name">NICAL <b>MARINE</b><small>BUSINESS MANAGEMENT</small></span></a>
+      <div class="workspace-label">WORKSPACE</div>
+      <nav class="main-nav" aria-label="เมนูหลัก" id="mainNav"></nav>
+      <div class="sidebar-bottom">
+        <div class="help-card"><span class="help-icon" data-icon="lifeBuoy"></span><div><b>ต้องการความช่วยเหลือ?</b><span>ติดต่อทีมสนับสนุน</span></div><span class="help-arrow" data-icon="arrowRight"></span></div>
+        <button class="profile-button" id="profileButton"><span class="avatar">NC</span><span class="profile-info"><b>Nical Company</b><small>ผู้ดูแลระบบ</small></span><span class="profile-menu" data-icon="more"></span></button>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <div class="topbar-left"><button class="icon-button mobile-menu" id="menuToggle" aria-label="เปิดเมนู"><span data-icon="menu"></span></button><div class="breadcrumb"><span>Workspace</span><span class="crumb-slash">/</span><b id="breadcrumbCurrent">ภาพรวม</b></div></div>
+        <div class="topbar-right"><div class="today-label"><span data-icon="calendar"></span><span id="todayDate"></span></div><button class="icon-button notification-button" aria-label="การแจ้งเตือน"><span data-icon="bell"></span><i></i></button><span class="topbar-divider"></span><button class="user-chip" id="topProfile"><span class="avatar avatar-small">NC</span><span class="user-chip-copy"><b>Nical Company</b><small>ผู้ดูแลระบบ</small></span><span class="chevron" data-icon="chevronDown"></span></button></div>
+      </header>
+      <section class="page-content" id="pageContent" tabindex="-1"></section>
+    </main>
+  </div>
+  <div class="toast-region" id="toastRegion" aria-live="polite"></div>
+  <div class="modal-layer" id="modalLayer" aria-hidden="true"></div>
+  <input class="visually-hidden" type="file" id="fileInput" accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.png">
+  <script src="app.js"></script>
+</body>
+</html>
