@@ -47,7 +47,8 @@ const pages = [
   { id: 'projects', title: 'โครงการ', description: 'ติดตามความคืบหน้าโครงการของคุณ', nav: 'โครงการ', icon: 'briefcase' },
   { id: 'finance', title: 'การเงิน', description: 'สรุปรายรับ ต้นทุน และผลประกอบการ', nav: 'การเงิน', icon: 'chart' },
   { id: 'documents', title: 'เอกสาร', description: 'จัดเก็บและค้นหาเอกสารสำคัญของบริษัท', nav: 'เอกสาร', icon: 'file' },
-  { id: 'knowledge', title: 'คลังความรู้', description: 'แหล่งรวมคู่มือและข้อมูลทางเทคนิค', nav: 'คลังความรู้', icon: 'book' }
+  { id: 'knowledge', title: 'คลังความรู้', description: 'แหล่งรวมคู่มือและข้อมูลทางเทคนิค', nav: 'คลังความรู้', icon: 'book' },
+  { id: 'about', title: 'เกี่ยวกับเรา', description: 'ข้อมูลบริษัทและธุรกิจของ Nical Marine', nav: 'เกี่ยวกับเรา', icon: 'ship' }
 ];
 const nav = document.getElementById('mainNav');
 nav.innerHTML = pages.map(p => `<button class="nav-item" data-page="${p.id}">${icon(p.icon)}<span>${p.nav}</span></button>`).join('');
@@ -191,7 +192,30 @@ function renderKnowledge() {
       ${table(['ชื่อเอกสาร','หมวดหมู่','อัปเดตล่าสุด','จัดการ'], documents.slice(1,5).map(d => `<tr><td><div class="document-name"><span class="file-type ${d[4]}">${d[2]}</span>${d[0]}</div></td><td>คู่มือผลิตภัณฑ์</td><td>${d[1].split('· ')[1]}</td><td>${rowAction('preview','ดูตัวอย่าง','eyeSmall')}${rowAction('download','ดาวน์โหลด','download')}</td></tr>`).join(''))}</article>`;
 }
 
-const renderers = { dashboard: renderDashboard, customers: renderCustomers, products: renderProducts, quotations: renderQuotations, projects: renderProjects, finance: renderFinance, documents: renderDocuments, knowledge: renderKnowledge };
+function renderAbout() {
+  return `${heading('เกี่ยวกับเรา','รู้จัก Nical Marine Co., Ltd.')}
+    <section class="about-hero card">
+      <div class="about-hero-copy">
+        <span class="eyebrow">ABOUT NICAL MARINE</span>
+        <h2>Nical Marine Co., Ltd.</h2>
+        <p class="about-thai-name">บริษัท นิคอล มารีน จำกัด</p>
+        <p class="about-intro">บริษัทที่ดำเนินธุรกิจในกรุงเทพฯ ประเทศไทย โดยเชี่ยวชาญด้านการค้าและการผลิตอุปกรณ์ความปลอดภัย รวมถึงแพชูชีพสำหรับงานทางทะเล</p>
+      </div>
+      <div class="about-hero-mark" aria-hidden="true">${icon('ship')}</div>
+    </section>
+    <section class="about-details" aria-label="Company details">
+      <article class="card about-detail-card"><span class="about-detail-icon">${icon('pin')}</span><div><span class="about-detail-label">ที่ตั้ง</span><h3>กรุงเทพฯ ประเทศไทย</h3><p>Bangkok, Thailand</p></div></article>
+      <article class="card about-detail-card"><span class="about-detail-icon">${icon('wrench')}</span><div><span class="about-detail-label">ธุรกิจหลัก</span><h3>อุปกรณ์ความปลอดภัยทางทะเล</h3><p>Trading and manufacturing</p></div></article>
+      <article class="card about-detail-card"><span class="about-detail-icon">${icon('lifeBuoy')}</span><div><span class="about-detail-label">ผลิตภัณฑ์เฉพาะทาง</span><h3>แพชูชีพ</h3><p>Marine life rafts</p></div></article>
+    </section>
+    <article class="card about-company-card">
+      <div><span class="eyebrow">COMPANY PROFILE</span><h2>ข้อมูลบริษัท</h2><p>ข้อมูลสถานะและลักษณะธุรกิจของบริษัทตามแหล่งอ้างอิงที่ระบุ</p></div>
+      <div class="about-company-status"><span class="status status-success">ดำเนินกิจการอยู่</span><span>Active company</span></div>
+    </article>
+    <div class="about-sources"><span>แหล่งข้อมูล:</span><a href="https://www.dataforthai.com/company/0105561035630/" target="_blank" rel="noopener noreferrer">DataForThai ${icon('arrowUpRight')}</a><a href="https://www.matchlink.asia/business/page/Thailand/BANGKOK/01976-nical-marine-co-ltd.html" target="_blank" rel="noopener noreferrer">MatchLink ${icon('arrowUpRight')}</a></div>`;
+}
+
+const renderers = { dashboard: renderDashboard, customers: renderCustomers, products: renderProducts, quotations: renderQuotations, projects: renderProjects, finance: renderFinance, documents: renderDocuments, knowledge: renderKnowledge, about: renderAbout };
 function navigate(id) {
   if (!renderers[id]) return;
   currentPage = id;
