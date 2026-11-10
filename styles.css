@@ -63,6 +63,8 @@ svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width:
 .login-button { width: 100%; height: 48px; margin-top: 5px; font-size: 14px; }
 .login-button svg { width: 17px; }
 .login-hint { display: flex; justify-content: center; align-items: center; gap: 7px; margin: 18px 0 0; color: #8e9ba8; font-size: 11px; }
+.login-help-link { display: block; margin: 13px auto 0; padding: 3px 6px; border: 0; color: #377db5; background: transparent; font-size: 11px; }
+.login-help-link:hover { color: #1b5b8d; text-decoration: underline; }
 .secure-dot { width: 6px; height: 6px; border-radius: 50%; background: #40a582; }
 .login-copyright { position: absolute; bottom: 28px; color: #a1aab5; font-size: 11px; }
 
@@ -80,13 +82,15 @@ svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width:
 .nav-item.active { color: #fff; background: #ffffff15; box-shadow: inset 3px 0 #75b6ea; }
 .nav-item.active svg { color: #8bc6f1; }
 .sidebar-bottom { margin-top: auto; }
-.help-card { display: flex; align-items: center; gap: 10px; padding: 13px 10px; border: 1px solid #ffffff17; border-radius: 8px; margin-bottom: 15px; }
+.help-card { width: 100%; display: flex; align-items: center; gap: 10px; padding: 13px 10px; border: 1px solid #ffffff17; border-radius: 8px; margin-bottom: 15px; color: #fff; background: transparent; text-align: left; transition: background .18s, border-color .18s; }
+.help-card:hover { border-color: #ffffff35; background: #ffffff0a; }
+.help-card:focus-visible, .login-help-link:focus-visible, .help-inline-action:focus-visible { outline: 2px solid #75b6ea; outline-offset: 3px; }
 .help-icon { display: grid; place-items: center; color: #91bde0; }
 .help-icon svg { width: 18px; }
-.help-card div { flex: 1; min-width: 0; }
+.help-copy { flex: 1; min-width: 0; }
 .help-card b, .help-card span { display: block; }
 .help-card b { font-size: 10px; font-weight: 500; white-space: nowrap; }
-.help-card div span { color: #94a8bb; font-size: 10px; }
+.help-card .help-copy > span { color: #94a8bb; font-size: 10px; }
 .help-arrow svg { width: 14px; color: #91a7bb; }
 .profile-button { width: 100%; display: flex; align-items: center; gap: 10px; text-align: left; padding: 11px 7px 2px; color: #fff; background: none; border: 0; border-top: 1px solid #ffffff19; }
 .avatar { width: 34px; height: 34px; flex: 0 0 auto; border-radius: 50%; display: inline-grid; place-items: center; background: #dceaf6; color: #22527c; font: 700 11px "DM Sans", sans-serif; }
@@ -274,6 +278,13 @@ svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width:
 .modal-layer { position: fixed; inset: 0; z-index: 20; display: none; place-items: center; padding: 20px; background: rgba(15,35,57,.42); }
 .modal-layer.open { display: grid; }
 .modal { width: min(100%, 520px); max-height: min(90vh, 760px); overflow: auto; background: #fff; border-radius: 11px; box-shadow: 0 22px 70px rgba(9,24,41,.25); }
+.help-modal { width: min(100%, 560px); }
+.help-content { display: grid; gap: 9px; padding: 17px 21px; }
+.help-topic { padding: 12px 14px; border: 1px solid #e9edf2; border-radius: 7px; background: #fbfcfd; }
+.help-topic summary { color: #354b62; font-size: 12px; font-weight: 600; cursor: pointer; }
+.help-topic p { margin: 9px 0 0; color: #738295; font-size: 11px; line-height: 1.8; }
+.help-inline-action { margin-top: 8px; padding: 0; border: 0; color: #377db5; background: transparent; font-size: 11px; }
+.help-inline-action:hover { text-decoration: underline; }
 .modal-header { display: flex; align-items: flex-start; justify-content: space-between; padding: 19px 21px 14px; border-bottom: 1px solid #edf0f3; }
 .modal-header h2 { margin: 0; font-size: 17px; font-weight: 600; }
 .modal-header p { margin: 4px 0 0; color: #8c99a6; font-size: 10px; }

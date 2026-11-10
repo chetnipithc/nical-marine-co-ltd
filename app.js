@@ -243,6 +243,14 @@ function openModal(title, description, body, submitLabel = 'บันทึก�
   layer.setAttribute('aria-hidden', 'false');
   layer.querySelector('input,select,textarea')?.focus();
 }
+function openHelp() {
+  const layer = document.getElementById('modalLayer');
+  const showKnowledgeLink = !document.getElementById('appShell').classList.contains('is-hidden');
+  layer.innerHTML = `<section class="modal help-modal" role="dialog" aria-modal="true" aria-labelledby="helpTitle" aria-describedby="helpDescription"><div class="modal-header"><div><h2 id="helpTitle">ศูนย์ช่วยเหลือ</h2><p id="helpDescription">คำแนะนำการใช้งาน Nical Marine</p></div><button class="modal-close" type="button" data-action="close-modal" aria-label="ปิด">${icon('close')}</button></div><div class="help-content"><details class="help-topic" open><summary>เริ่มต้นใช้งานระบบอย่างไร?</summary><p>หลังเข้าสู่ระบบ เลือกเมนูด้านซ้ายเพื่อดูภาพรวม จัดการลูกค้า สินค้า ใบเสนอราคา โครงการ การเงิน และเอกสาร</p></details><details class="help-topic"><summary>ลืมรหัสผ่านหรือเข้าสู่ระบบไม่ได้</summary><p>กรุณาติดต่อผู้ดูแลระบบของบริษัทเพื่อขอรีเซ็ตรหัสผ่าน และตรวจสอบชื่อผู้ใช้งานก่อนลองอีกครั้ง</p><button class="help-inline-action" type="button" data-action="help-password">ดูวิธีรีเซ็ตรหัสผ่าน</button></details><details class="help-topic"><summary>ข้อมูลที่แสดงในระบบเป็นข้อมูลจริงหรือไม่?</summary><p>หน้าจอนี้เป็นตัวอย่างการใช้งาน ข้อมูลและการบันทึกบางรายการเป็นข้อมูลจำลองและยังไม่เชื่อมต่อฐานข้อมูล</p></details></div><div class="modal-footer">${showKnowledgeLink ? '<button class="button button-sm button-outline" type="button" data-action="help-knowledge">ไปที่คลังความรู้</button>' : ''}<button class="button button-sm button-primary" type="button" data-action="close-modal">ปิด</button></div></section>`;
+  layer.classList.add('open');
+  layer.setAttribute('aria-hidden', 'false');
+  layer.querySelector('.modal-close').focus();
+}
 function field(label, placeholder, type = 'text', full = false) {
   return `<div class="form-field ${full ? 'full' : ''}"><label>${label}</label><input type="${type}" placeholder="${placeholder}" ${type === 'email' ? 'autocomplete="email"' : ''}></div>`;
 }
@@ -291,6 +299,15 @@ document.addEventListener('click', event => {
   if (!actionButtonElement) return;
   const action = actionButtonElement.dataset.action;
   if (action.startsWith('add-')) modalFor(action);
+  else if (action === 'help') openHelp();
+  else if (action === 'help-password') {
+    closeModal();
+    toast('กรุณาติดต่อผู้ดูแลระบบเพื่อรีเซ็ตรหัสผ่าน');
+  }
+  else if (action === 'help-knowledge') {
+    closeModal();
+    navigate('knowledge');
+  }
   else if (action === 'upload') document.getElementById('fileInput').click();
   else if (action === 'preview') {
     const name = actionButtonElement.closest('tr')?.querySelector('.document-name')?.innerText.split('\n')[0] || 'เอกสารตัวอย่าง';
